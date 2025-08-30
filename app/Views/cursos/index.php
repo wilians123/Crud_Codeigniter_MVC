@@ -9,9 +9,10 @@
 </head>
 
 <body>
+    <?= view('layouts/navbar') ?>
     <div class="container">
-        <h4><?php echo $titulo ?></h4>
-        <a class="btn waves-effect" href="<?= site_url('alumnos/create') ?>">➕ Nuevo Curso</a>
+        <h4>Listado de Cursos</h4>
+        <a class="btn waves-effect" href="<?= site_url('cursos/create') ?>">➕ Nuevo Curso</a>
         <table class="striped highlight responsive-table">
             <tr>
                 <th>ID</th>
@@ -27,8 +28,10 @@
                     <td><?= $row['profesor'] ?></td>
                     <td><?= $row['inactivo'] ? 'Sí' : 'No' ?></td>
                     <td>
-                        <a class="btn-small blue" href="">✏️ Editar</a>
-                        <a class="btn-small red" href="" onclick="return confirm('¿Seguro que quieres eliminar?')">🗑️ Eliminar</a>
+                        <a href="<?= site_url('cursos/edit/' . $row['curso']) ?>" class="btn-small blue">Editar</a>
+                        <a href="<?= site_url('cursos/delete/' . $row['curso']) ?>"
+                            class="btn-small red"
+                            onclick="return confirm('¿Eliminar curso?')">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
